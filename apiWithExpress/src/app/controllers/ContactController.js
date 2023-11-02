@@ -4,7 +4,7 @@ class ContactController {
   async index(request, response) {
     // list all records
     const contacts = await ContactsRepository.findAll();
-    response.send(contacts);
+    response.json(contacts);
   }
 
   async show(request, response) {
@@ -81,7 +81,7 @@ class ContactController {
 
     await ContactsRepository.delete(id);
 
-    response.status(204).json({ error: 'User Deleted' });
+    response.status(204).json({ sucess: 'User Deleted' });
   }
 }
 
