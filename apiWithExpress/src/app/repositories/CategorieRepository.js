@@ -7,7 +7,22 @@ class CategorieRepository {
   }
 
   async findByName(name) {
-    const row = await dataBase.query('SELECT * FROM categories WHERE name = $1', [name]);
+    const [row] = await dataBase.query('SELECT * FROM categories WHERE name = $1', [name]);
+    return row;
+  }
+
+  async findById(id) {
+    const row = await dataBase.query('SELECT * FROM categories WHERE id = $1', [id]);
+    return row;
+  }
+
+  async update(name, id) {
+    const [row] = await dataBase.query(`
+      UPDATE categories
+      SET name = $1
+      WHERE id = $2
+      RETURNING *`, [name, id]);
+
     return row;
   }
 

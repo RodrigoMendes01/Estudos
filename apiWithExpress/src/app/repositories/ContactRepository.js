@@ -2,12 +2,22 @@ const dataBase = require('../../database');
 
 class ContactsRepository {
   async findAll() {
-    const rows = await dataBase.query('SELECT * FROM contacts ORDER BY name ASC');
+    const rows = await dataBase.query(`
+      SELECT contacts.*, categories.name AS category_name
+      FROM contacts
+      LEFT JOIN categories ON categories.id = contacts.category_id
+      ORDER BY contacts.name ASC
+
+    `);
     return rows;
   }
 
   async findById(id) {
-    const [row] = await dataBase.query('SELECT * from contacts WHERE id = $1', [id]);
+    const [row] = await dataBase.query(`
+    SELECT contacts.*, categories.name AS category_name
+    FROM contacts
+    LEFT JOIN categories ON categories.id = contacts.category_id
+    WHERE contacts.id = $1`, [id]);
     return row;
   }
 
