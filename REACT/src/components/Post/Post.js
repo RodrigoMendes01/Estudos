@@ -1,12 +1,15 @@
 import React from "react";
 import PropTypes from "prop-types"
-import PostHeader from "./PostHeader"
-import Button from "./Button";
+import PostHeader from "../PostHeader/PostHeader.js"
+import Button from "../Button/Button.js";
+
+import { Rate, Container } from './styles.js'
 
 function Post(props) {
   return <>
-    <article>
+    <Container removed={props.post.removed}>
       <PostHeader
+        onRemove={props.onRemove}
         post={{
           id: props.post.id,
           title: props.post.title,
@@ -14,12 +17,11 @@ function Post(props) {
           read: props.post.read
         }}
       />
-      <br />
-      <span>Likes: {props.post.likes}</span><br />
+      <Rate>Likes: {props.post.likes}</Rate><br />
       <Button onClick={() => props.onRemove(props.post.id)}>
         Remover
       </Button>
-    </article>
+    </Container>
     <br />
   </>
 }
@@ -27,6 +29,7 @@ function Post(props) {
 Post.propTypes = {
   onRemove: PropTypes.func.isRequired,
   post: PropTypes.shape({
+    removed: PropTypes.bool.isRequired,
     likes: PropTypes.number.isRequired,
     title: PropTypes.string.isRequired,
     subtitle: PropTypes.string.isRequired,

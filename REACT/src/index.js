@@ -3,9 +3,13 @@ import ReactDOM from 'react-dom';
 
 // Components
 
-import App from './components/App';
+import GlobalStyle from './styles/global.js';
+import App from './components/App/App.js';
 
 ReactDOM.render(
-  <App />,
+  <>
+    <GlobalStyle />
+    <App />
+  </>,
   document.getElementById('root')
 );
