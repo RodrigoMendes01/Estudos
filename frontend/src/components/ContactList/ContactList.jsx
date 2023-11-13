@@ -18,33 +18,32 @@ function ContactList () {
     </Header>
 
     <ListContainer>
-        <header>
-          <button>
-            <span>Nome</span>
-            <img src={arrow} alt="Seta apontando" />
-          </button>
-        </header>
-
-        <Card>
-          <div className="info">
-            <div className="contact-name">
-              <strong>Rodrigo Mendes</strong>
-              <small>instagram</small>
-            </div>
-            <span>rodrigo@mail.com</span>
-            <span>(11) 98888-8888</span>
-          </div>
-          <div className="manipulation">
-            <a href="#">
-              <img src={edit} alt="Editar contato" />
-            </a>
-            <button>
-              <img src={trash} alt="Apagar contato" />
-            </button>
-          </div>
-        </Card>
-
+      <header>
+        <button>
+          <span>Nome</span>
+          <img src={arrow} alt="Seta apontando" />
+        </button>
+      </header>
     </ListContainer>
+
+    <Card>
+      <div className="info">
+        <div className="contact-name">
+          <strong>Rodrigo Mendes</strong>
+          <small>instagram</small>
+        </div>
+        <span>rodrigo@mail.com</span>
+        <span>(11) 98888-8888</span>
+      </div>
+      <div className="manipulation">
+        <Link to='/edit/123'>
+          <img src={edit} Linklt="Editar contato" />
+        </Link>
+        <button>
+          <img src={trash} alt="Apagar contato" />
+        </button>
+      </div>
+    </Card>
   </Container>
   )
 }
