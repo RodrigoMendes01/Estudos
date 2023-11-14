@@ -1,44 +1,107 @@
 // MODULES
 // EXTERNAL
 import PropTypes from 'prop-types'
+import { useState } from 'react';
 
 // INTERNAL
 import FormGroup from '../FormGroup/FormGroup';
-import Input from '../Input.js'
-import Select from '../Select.js'
-import Button from '../Button.js'
+import Input from '../Input.js';
+import Select from '../Select.js';
+import Button from '../Button.js';
+import isEmailValid from '../../utils/isEmailValid.js';
+import useErrors from '../../hooks/useErrors.js';
+import isFormatPhone from '../../utils/isFormatPhone.js'
 
 // STYLES
 import { Form, ButtonContainer } from './styles';
 
 
-function ContactForm ({ buttonLabel}) {
+function ContactForm ({ buttonLabel }) {
+  // STATES
+  const [name, setName] = useState('');
+  const [email, setEmail] = useState('');
+  const [phone, setPhone] = useState('');
+  const [category, setCategory] = useState('');
+
+  const { setError, removeError, getErrorMessageByFieldName, errors} = useErrors();
+  const isFormValid = (name && errors.length === 0);
+
+  function handleChangeName (event) {
+    setName(event.target.value);
+
+    if (!event.target.value) {
+      setError({field: 'name', message: 'Nome é obrigatório.'})
+    } else {
+      removeError('name')
+    }
+  };
+
+  function handleChangeEmail (event) {
+    setEmail(event.target.value);
+
+    if (event.target.value && !isEmailValid(event.target.value)) {
+     setError({field: 'email', message: 'E-mail inválido.'})
+
+    } else {
+      removeError('email')
+    }
+  };
+
+  function handleChangePhone (event) {
+    setPhone(isFormatPhone(event.target.value));
+  }
+
+  function handleSubmit(event) {
+    event.preventDefault();
+  };
+
   return (
-    <Form>
-      <FormGroup>
+    <Form onSubmit={handleSubmit} noValidate>
+      <FormGroup error={getErrorMessageByFieldName('name')}>
         <Input
-          placeholder='Nome'
+          placeholder='Nome *'
+          value={name}
+          onChange={handleChangeName}
+          error={getErrorMessageByFieldName('name')}
         />
       </FormGroup>
 
-      <FormGroup
-        error='O formato do e-mail é inválido'
-      >
-        <Input placeholder='E-mail' error/>
+      <FormGroup error={getErrorMessageByFieldName('email')}>
+        <Input
+          placeholder='E-mail'
+          value={email}
+          type='email'
+          onChange={handleChangeEmail}
+          error={getErrorMessageByFieldName('email')}
+        />
+      </FormGroup>
+
+      <FormGroup error={getErrorMessageByFieldName('phone')}>
+        <Input
+          placeholder='Telefone'
+          value={phone}
+          onChange={handleChangePhone}
+          maxLength='15'
+        />
       </FormGroup>
 
       <FormGroup>
-        <Input placeholder='Telefone'/>
-      </FormGroup>
-
-      <FormGroup>
-        <Select>
+        <Select
+          value={category}
+          onChange={event => setCategory(event.target.value)}
+        >
+          <option selected disable>Selecione a categoria</option>
           <option value="Instagram">Instagram</option>
+          <option value="Discord">Discord</option>
+          <option value="Facebook">Facebook</option>
         </Select>
       </FormGroup>
 
       <ButtonContainer>
-        <Button type='submit'>
+        <Button
+          type='submit'
+          disabled={!isFormValid}
+        >
           {buttonLabel}
         </Button>
       </ButtonContainer>

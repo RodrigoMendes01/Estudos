@@ -1,5 +1,6 @@
 // COMPONENTS
-import PageHeader from "../../components/PageHeader/PageHeader"
+import PageHeader from "../../components/PageHeader/PageHeader";
+import ContactForm from "../../components/ContactForm/ContactForm"
 
 function EditContact() {
   return (
