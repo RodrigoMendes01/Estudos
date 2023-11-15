@@ -22,7 +22,7 @@ class CategorieController {
 
     const categorie = await CategorieRepository.create(name);
 
-    response.json(categorie);
+    response.status(201).json(categorie);
   }
 
   async update(request, response) {
@@ -32,7 +32,7 @@ class CategorieController {
     const categorieExist = await CategorieRepository.findById(id);
 
     if (!categorieExist) {
-      response.status(404).json({ error: 'This categorie dosent exists' });
+      response.status(404).json({ error: 'This categorie dosen`t exists' });
     }
 
     const categorie = await CategorieRepository.update(name, id);
@@ -45,7 +45,7 @@ class CategorieController {
 
     await CategorieRepository.delete(id);
 
-    response.status(200).json({ message: 'Categorie deleted' });
+    response.setStatus(204);
   }
 }
 
