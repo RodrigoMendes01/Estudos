@@ -1,4 +1,4 @@
-import styled, {css} from "styled-components";
+import styled, { css } from 'styled-components';
 
 export default styled.button`
   padding: 0 16px;
@@ -25,7 +25,7 @@ export default styled.button`
     cursor: default;
   }
 
-  ${({danger, theme}) => danger && css`
+  ${({ danger }) => danger && css`
     background: #fc5050;
 
     &:hover {
@@ -37,4 +37,4 @@ export default styled.button`
     }
 
   `}
-`
+`;

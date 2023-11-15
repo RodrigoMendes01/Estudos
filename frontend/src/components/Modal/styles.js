@@ -1,4 +1,4 @@
-import styled from "styled-components";
+import styled from 'styled-components';
 
 export const OverLay = styled.div`
   display: flex;
@@ -23,10 +23,10 @@ export const Container = styled.div`
 
   h1 {
     font-size: 22px;
-    color: ${({danger, theme}) => danger ?
-      theme.colors.danger.main :
-      theme.colors.gray[900]
-    };
+    color: ${({ danger, theme }) => (danger
+    ? theme.colors.danger.main
+    : theme.colors.gray[900])
+};
   }
 
   p {
@@ -47,4 +47,4 @@ export const Footer = styled.div`
     margin-right: 8px;
     color: #bcbcbc
   }
-`
+`;

@@ -1,6 +1,6 @@
 // COMPONENTS
-import PageHeader from "../../components/PageHeader/PageHeader";
-import ContactForm from "../../components/ContactForm/ContactForm"
+import PageHeader from '../../components/PageHeader/PageHeader';
+import ContactForm from '../../components/ContactForm/ContactForm';
 
 function EditContact() {
   return (
@@ -13,7 +13,7 @@ function EditContact() {
         buttonLabel="Salvar alterações"
       />
     </>
-  )
+  );
 }
 
-export default EditContact
+export default EditContact;

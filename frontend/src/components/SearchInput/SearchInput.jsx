@@ -1,12 +1,23 @@
-// THEMES
-import { InputSearchContainer } from './styles'
+import PropTypes from 'prop-types';
 
-function SearchInput() {
+// THEMES
+import { InputSearchContainer } from './styles';
+
+function SearchInput({ value, onChange }) {
   return (
     <InputSearchContainer>
-      <input type="text" placeholder='Pesquisa Contato...' />
+      <input
+        value={value}
+        onChange={onChange}
+        placeholder="Pesquisa Contato..."
+      />
     </InputSearchContainer>
-  )
+  );
 }
+
+SearchInput.propTypes = {
+  value: PropTypes.string.isRequired,
+  onChange: PropTypes.func.isRequired,
+};
 
 export default SearchInput;

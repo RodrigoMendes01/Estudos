@@ -1,65 +1,65 @@
 // MODULES
 // EXTERNAL
-import PropTypes from 'prop-types'
+import PropTypes from 'prop-types';
 import { useState } from 'react';
 
 // INTERNAL
 import FormGroup from '../FormGroup/FormGroup';
-import Input from '../Input.js';
-import Select from '../Select.js';
-import Button from '../Button.js';
-import isEmailValid from '../../utils/isEmailValid.js';
-import useErrors from '../../hooks/useErrors.js';
-import isFormatPhone from '../../utils/isFormatPhone.js'
+import Input from '../Input';
+import Select from '../Select';
+import Button from '../Button';
+import isEmailValid from '../../utils/isEmailValid';
+import useErrors from '../../hooks/useErrors';
+import isFormatPhone from '../../utils/isFormatPhone';
 
 // STYLES
 import { Form, ButtonContainer } from './styles';
 
-
-function ContactForm ({ buttonLabel }) {
+function ContactForm({ buttonLabel }) {
   // STATES
   const [name, setName] = useState('');
   const [email, setEmail] = useState('');
   const [phone, setPhone] = useState('');
   const [category, setCategory] = useState('');
 
-  const { setError, removeError, getErrorMessageByFieldName, errors} = useErrors();
+  const {
+    setError, removeError, getErrorMessageByFieldName, errors,
+  } = useErrors();
   const isFormValid = (name && errors.length === 0);
 
-  function handleChangeName (event) {
+  function handleChangeName(event) {
     setName(event.target.value);
 
     if (!event.target.value) {
-      setError({field: 'name', message: 'Nome é obrigatório.'})
+      setError({ field: 'name', message: 'Nome é obrigatório.' });
     } else {
-      removeError('name')
+      removeError('name');
     }
-  };
+  }
 
-  function handleChangeEmail (event) {
+  function handleChangeEmail(event) {
     setEmail(event.target.value);
 
     if (event.target.value && !isEmailValid(event.target.value)) {
-     setError({field: 'email', message: 'E-mail inválido.'})
-
+      setError({ field: 'email', message: 'E-mail inválido.' });
     } else {
-      removeError('email')
+      removeError('email');
     }
-  };
+  }
 
-  function handleChangePhone (event) {
+  function handleChangePhone(event) {
     setPhone(isFormatPhone(event.target.value));
   }
 
   function handleSubmit(event) {
     event.preventDefault();
-  };
+  }
 
   return (
     <Form onSubmit={handleSubmit} noValidate>
       <FormGroup error={getErrorMessageByFieldName('name')}>
         <Input
-          placeholder='Nome *'
+          placeholder="Nome *"
           value={name}
           onChange={handleChangeName}
           error={getErrorMessageByFieldName('name')}
@@ -68,9 +68,9 @@ function ContactForm ({ buttonLabel }) {
 
       <FormGroup error={getErrorMessageByFieldName('email')}>
         <Input
-          placeholder='E-mail'
+          placeholder="E-mail"
           value={email}
-          type='email'
+          type="email"
           onChange={handleChangeEmail}
           error={getErrorMessageByFieldName('email')}
         />
@@ -78,19 +78,19 @@ function ContactForm ({ buttonLabel }) {
 
       <FormGroup error={getErrorMessageByFieldName('phone')}>
         <Input
-          placeholder='Telefone'
+          placeholder="Telefone"
           value={phone}
           onChange={handleChangePhone}
-          maxLength='15'
+          maxLength="15"
         />
       </FormGroup>
 
       <FormGroup>
         <Select
           value={category}
-          onChange={event => setCategory(event.target.value)}
+          onChange={(event) => setCategory(event.target.value)}
         >
-          <option selected disable>Selecione a categoria</option>
+          <option selected>Selecione a categoria</option>
           <option value="Instagram">Instagram</option>
           <option value="Discord">Discord</option>
           <option value="Facebook">Facebook</option>
@@ -99,18 +99,18 @@ function ContactForm ({ buttonLabel }) {
 
       <ButtonContainer>
         <Button
-          type='submit'
+          type="submit"
           disabled={!isFormValid}
         >
           {buttonLabel}
         </Button>
       </ButtonContainer>
     </Form>
-  )
+  );
 }
 
-ContactForm.prototype = {
-  buttonLabel: PropTypes.string.isRequired
-}
+ContactForm.propTypes = {
+  buttonLabel: PropTypes.string.isRequired,
+};
 
-export default ContactForm
+export default ContactForm;

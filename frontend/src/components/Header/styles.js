@@ -1,4 +1,4 @@
-import styled from "styled-components";
+import styled from 'styled-components';
 
 export const Container = styled.header`
   margin-top: 74px;
@@ -11,4 +11,3 @@ export const Container = styled.header`
     width: 201px;
   }
 `;
-

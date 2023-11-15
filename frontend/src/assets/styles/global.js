@@ -1,4 +1,4 @@
-import { createGlobalStyle } from 'styled-components'
+import { createGlobalStyle } from 'styled-components';
 
 export default createGlobalStyle`
   * {
@@ -9,7 +9,7 @@ export default createGlobalStyle`
   }
   body {
     font-size: 16px;
-    background-color: ${({theme}) => theme.colors.background };
+    background-color: ${({ theme }) => theme.colors.background};
   }
   button {
     cursor: pointer;
