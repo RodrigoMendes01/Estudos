@@ -6,7 +6,7 @@ export const Container = styled.div`
 
 export const Header = styled.header`
   display: flex;
-  justify-content: space-between;
+  justify-content: ${({ justifyContent }) => justifyContent};
   align-items: center;
 
   strong {
@@ -53,6 +53,7 @@ export const ListHeader = styled.header`
       : 'rotate(0deg)')
 };
       transition: transform 0.2s ease-in;
+      z-index: -1;
     }
   }
 `;
@@ -100,5 +101,32 @@ export const Card = styled.div`
       border: none;
       margin-left: 8px;
     }
+  }
+`;
+
+export const EmptyListContainer = styled.div`
+  margin-top: 24px;
+  display: flex;
+  align-items: flex-start;
+
+  p {
+    color: ${({ theme }) => theme.colors.gray[200]};
+    text-align: center;
+    margin-top: 8px;
+  }
+
+  strong {
+    color: ${({ theme }) => theme.colors.primary.main}
+  }
+`;
+
+export const EmptyFilteredContactsContainer = styled.div`
+  margin-top: 24px;
+  display: flex;
+
+  span {
+    color: ${({ theme }) => theme.colors.gray[200]};
+    margin-left: 24px;
+    word-break: break-word;
   }
 `;

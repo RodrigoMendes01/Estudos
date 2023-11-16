@@ -1,4 +1,6 @@
-import { useEffect, useState, useMemo } from 'react';
+import {
+  useEffect, useState, useMemo, useCallback,
+} from 'react';
 import ContactsService from '../../services/ContactsService';
 
 // COMPONENTS
@@ -11,6 +13,7 @@ function Home() {
   const [orderBy, setOrderBy] = useState('asc');
   const [searchTerm, setSearchTerm] = useState('');
   const [isLoading, setIsLoading] = useState(true);
+  const [hasError, setHasError] = useState(false);
 
   const filteredContacts = useMemo(() => (
     contacts.filter((contact) => (
@@ -18,22 +21,28 @@ function Home() {
     ))
   ), [contacts, searchTerm]);
 
-  useEffect(() => {
-    async function loadContacts() {
+  const loadContacts = useCallback(
+    async () => {
       try {
         setIsLoading(true);
 
         const contactsList = await ContactsService.listContacts(orderBy);
+        // const contactsList = [];
 
+        setHasError(false);
         setContacts(contactsList);
-      } catch (error) {
-        console.log(error);
+      } catch {
+        setHasError(true);
       } finally {
         setIsLoading(false);
       }
-    }
+    },
+    [orderBy],
+  );
+
+  useEffect(() => {
     loadContacts();
-  }, [orderBy]);
+  }, [loadContacts]);
 
   function handleOnToggleOrderBy() {
     setOrderBy(
@@ -45,18 +54,28 @@ function Home() {
     setSearchTerm(event.target.value);
   }
 
+  function handleTryAgain() {
+    loadContacts();
+  }
+
   return (
     <>
       <Loader isLoading={isLoading} />
       <SearchInput
+        contacts={contacts}
         value={searchTerm}
         filteredContacts={filteredContacts}
         onChange={handleChangeSearchTerm}
       />
       <ContactList
+        hasError={hasError}
+        contacts={contacts}
         filteredContacts={filteredContacts}
         handleClick={handleOnToggleOrderBy}
+        handleTryAgain={handleTryAgain}
         orderBy={orderBy}
+        value={searchTerm}
+        isLoading={isLoading}
       />
     </>
   );

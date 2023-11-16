@@ -1,7 +1,7 @@
 // MODULES
 // EXTERNAL
 import PropTypes from 'prop-types';
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 
 // INTERNAL
 import FormGroup from '../FormGroup/FormGroup';
@@ -11,6 +11,7 @@ import Button from '../Button';
 import isEmailValid from '../../utils/isEmailValid';
 import useErrors from '../../hooks/useErrors';
 import isFormatPhone from '../../utils/isFormatPhone';
+import CategorieService from '../../services/CategorieService';
 
 // STYLES
 import { Form, ButtonContainer } from './styles';
@@ -20,12 +21,26 @@ function ContactForm({ buttonLabel }) {
   const [name, setName] = useState('');
   const [email, setEmail] = useState('');
   const [phone, setPhone] = useState('');
-  const [category, setCategory] = useState('');
+  const [categoryId, setCategoryId] = useState('');
+  const [categories, setCategories] = useState([]);
+  const [isLoadingCategories, setIsLoadingCategories] = useState(true);
 
   const {
     setError, removeError, getErrorMessageByFieldName, errors,
   } = useErrors();
   const isFormValid = (name && errors.length === 0);
+
+  useEffect(() => {
+    async function loadCategories() {
+      try {
+        const categoriesList = await CategorieService.listCategories();
+        setCategories(categoriesList);
+      } catch {} finally {
+        setIsLoadingCategories(false);
+      }
+    }
+    loadCategories();
+  }, []);
 
   function handleChangeName(event) {
     setName(event.target.value);
@@ -85,15 +100,18 @@ function ContactForm({ buttonLabel }) {
         />
       </FormGroup>
 
-      <FormGroup>
+      <FormGroup isLoading={isLoadingCategories}>
         <Select
-          value={category}
-          onChange={(event) => setCategory(event.target.value)}
+          disabled={isLoadingCategories}
+          value={categoryId}
+          onChange={(event) => setCategoryId(event.target.value)}
         >
-          <option selected>Selecione a categoria</option>
-          <option value="Instagram">Instagram</option>
-          <option value="Discord">Discord</option>
-          <option value="Facebook">Facebook</option>
+          <option value="">Selecione uma categoria</option>
+          {categories.map((categorie) => (
+            <option key={categorie.id} value={categorie.id}>
+              {categorie.name}
+            </option>
+          ))}
         </Select>
       </FormGroup>
 
