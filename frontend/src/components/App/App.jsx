@@ -9,16 +9,20 @@ import { Container } from './styles';
 
 // COMPONENTS
 import Header from '../Header/Header';
+import ToastContainer from '../Toast/ToastContainer/Toast';
 
 function App() {
   return (
     <BrowserRouter>
       <ThemeProvider theme={defaultTheme}>
         <GlobalStyles />
+        <ToastContainer />
+
         <Container>
           <Header />
           <Routes />
         </Container>
+
       </ThemeProvider>
     </BrowserRouter>
   );
