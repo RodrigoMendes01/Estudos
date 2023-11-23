@@ -8,8 +8,7 @@ function Toast() {
 
   useEffect(() => {
     function handleAddToast({ type, text }) {
-      setMessages((prevState) => [
-        ...prevState,
+      setMessages(() => [
         {
           id: Math.random(),
           type,

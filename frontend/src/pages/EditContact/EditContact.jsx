@@ -45,7 +45,7 @@ function EditContact() {
 
       const updateContact = await ContactsService.updateContact(id, contact);
 
-      setContactName(updateContact);
+      setContactName(updateContact.name);
 
       toast({
         type: 'success',

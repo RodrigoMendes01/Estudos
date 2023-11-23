@@ -107,7 +107,7 @@ function ContactList({
                 <Link to={`/edit/${contact.id}`}>
                   <img src={edit} alt="Editar contato" />
                 </Link>
-                <button type="button" onClick={() => onClick(contact.name)}>
+                <button type="button" onClick={() => onClick(contact)}>
                   <img src={trash} alt="Apagar contato" />
                 </button>
               </div>

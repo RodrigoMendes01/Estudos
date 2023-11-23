@@ -8,6 +8,7 @@ import Loader from '../../components/Loader/Loader';
 import ContactList from '../../components/ContactList/ContactList';
 import SearchInput from '../../components/SearchInput/SearchInput';
 import Modal from '../../components/Modal/Modal';
+import toast from '../../utils/toast';
 
 function Home() {
   const [contacts, setContacts] = useState([]);
@@ -19,7 +20,7 @@ function Home() {
   const [contactBeingDeleted, setContactBeingDeleted] = useState(null);
 
   const filteredContacts = useMemo(() => (
-    contacts.filter((contact) => (
+    contacts?.filter((contact) => (
       contact.name.toUpperCase().includes(searchTerm.toUpperCase())
     ))
   ), [contacts, searchTerm]);
@@ -67,6 +68,28 @@ function Home() {
 
   function handleCloseDeleteModal() {
     setIsDeleteModalVisible(false);
+    setContactBeingDeleted(null);
+  }
+
+  async function handleConfirmDeleteContact() {
+    try {
+      await ContactsService.deleteContact(contactBeingDeleted.id);
+
+      toast({
+        type: 'success',
+        text: 'Contato deletado com sucesso!',
+      });
+      setContacts((prevState) => {
+        prevState.filter((contact) => contact.id !== contactBeingDeleted.id);
+      });
+    } catch (error) {
+      toast({
+        type: 'danger',
+        text: 'Ocorreu um erro ao deletar o contato!',
+      });
+    } finally {
+      setIsDeleteModalVisible(false);
+    }
   }
 
   return (
@@ -74,10 +97,11 @@ function Home() {
       <Modal
         danger
         visible={isDeleteModalVisible}
-        title={`Tem certeza que deseja remover o contato "${contactBeingDeleted}"`}
+        title={`Tem certeza que deseja remover o contato "${contactBeingDeleted?.name}"`}
         cancelLabel="Cancelar"
         confirmLabel="Deletar"
         onCancel={handleCloseDeleteModal}
+        onConfirm={handleConfirmDeleteContact}
       >
         <p>Está ação não poderá ser desfeita!</p>
       </Modal>
