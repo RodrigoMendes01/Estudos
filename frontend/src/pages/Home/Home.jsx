@@ -7,6 +7,7 @@ import ContactsService from '../../services/ContactsService';
 import Loader from '../../components/Loader/Loader';
 import ContactList from '../../components/ContactList/ContactList';
 import SearchInput from '../../components/SearchInput/SearchInput';
+import Modal from '../../components/Modal/Modal';
 
 function Home() {
   const [contacts, setContacts] = useState([]);
@@ -14,6 +15,8 @@ function Home() {
   const [searchTerm, setSearchTerm] = useState('');
   const [isLoading, setIsLoading] = useState(true);
   const [hasError, setHasError] = useState(false);
+  const [isDeleteModalVisible, setIsDeleteModalVisible] = useState(false);
+  const [contactBeingDeleted, setContactBeingDeleted] = useState(null);
 
   const filteredContacts = useMemo(() => (
     contacts.filter((contact) => (
@@ -27,7 +30,6 @@ function Home() {
         setIsLoading(true);
 
         const contactsList = await ContactsService.listContacts(orderBy);
-        // const contactsList = [];
 
         setHasError(false);
         setContacts(contactsList);
@@ -58,8 +60,27 @@ function Home() {
     loadContacts();
   }
 
+  function handleDeleteContact(contact) {
+    setContactBeingDeleted(contact);
+    setIsDeleteModalVisible(true);
+  }
+
+  function handleCloseDeleteModal() {
+    setIsDeleteModalVisible(false);
+  }
+
   return (
     <>
+      <Modal
+        danger
+        visible={isDeleteModalVisible}
+        title={`Tem certeza que deseja remover o contato "${contactBeingDeleted}"`}
+        cancelLabel="Cancelar"
+        confirmLabel="Deletar"
+        onCancel={handleCloseDeleteModal}
+      >
+        <p>Está ação não poderá ser desfeita!</p>
+      </Modal>
       <Loader isLoading={isLoading} />
       <SearchInput
         contacts={contacts}
@@ -76,6 +97,7 @@ function Home() {
         orderBy={orderBy}
         value={searchTerm}
         isLoading={isLoading}
+        onClick={handleDeleteContact}
       />
     </>
   );

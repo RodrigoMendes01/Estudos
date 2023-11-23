@@ -1,7 +1,9 @@
 // MODULES
 // EXTERNAL
 import PropTypes from 'prop-types';
-import { useState, useEffect } from 'react';
+import {
+  useState, useEffect, forwardRef, useImperativeHandle,
+} from 'react';
 
 // INTERNAL
 import FormGroup from '../FormGroup/FormGroup';
@@ -10,14 +12,13 @@ import Select from '../Select';
 import Button from '../Button/Button';
 import isEmailValid from '../../utils/isEmailValid';
 import useErrors from '../../hooks/useErrors';
-import isFormatPhone from '../../utils/isFormatPhone';
 import CategorieService from '../../services/CategorieService';
 
 // STYLES
 import { Form, ButtonContainer } from './styles';
+import formatPhone from '../../utils/isFormatPhone';
 
-function ContactForm({ buttonLabel, onSubmit }) {
-  // STATES
+const ContactForm = forwardRef(({ buttonLabel, onSubmit }, ref) => {
   const [name, setName] = useState('');
   const [email, setEmail] = useState('');
   const [phone, setPhone] = useState('');
@@ -29,7 +30,23 @@ function ContactForm({ buttonLabel, onSubmit }) {
   const {
     setError, removeError, getErrorMessageByFieldName, errors,
   } = useErrors();
+
   const isFormValid = (name && errors.length === 0);
+
+  useImperativeHandle(ref, () => ({
+    setFieldsValues: (contact) => {
+      setName(contact.name ?? '');
+      setEmail(contact.email ?? '');
+      setPhone(formatPhone(contact.phone) ?? '');
+      setCategoryId(contact.category_id ?? '');
+    },
+    resetFields: () => {
+      setName('');
+      setEmail('');
+      setPhone('');
+      setCategoryId('');
+    },
+  }), []);
 
   useEffect(() => {
     async function loadCategories() {
@@ -64,7 +81,7 @@ function ContactForm({ buttonLabel, onSubmit }) {
   }
 
   function handleChangePhone(event) {
-    setPhone(isFormatPhone(event.target.value));
+    setPhone(formatPhone(event.target.value));
   }
 
   async function handleSubmit(event) {
@@ -77,10 +94,6 @@ function ContactForm({ buttonLabel, onSubmit }) {
     });
 
     setIsSubmitting(false);
-    setName('');
-    setEmail('');
-    setPhone('');
-    setCategoryId('');
   }
 
   return (
@@ -142,7 +155,7 @@ function ContactForm({ buttonLabel, onSubmit }) {
       </ButtonContainer>
     </Form>
   );
-}
+});
 
 ContactForm.propTypes = {
   buttonLabel: PropTypes.string.isRequired,

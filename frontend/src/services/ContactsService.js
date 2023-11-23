@@ -16,6 +16,10 @@ class ContactsService {
   getContactById(id) {
     return this.httpClient.get(`/contacts/${id}`);
   }
+
+  updateContact(id, contact) {
+    return this.httpClient.put(`/contacts/${id}`, { body: contact });
+  }
 }
 
 export default new ContactsService();

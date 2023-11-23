@@ -6,7 +6,7 @@ export const OverLay = styled.div`
   justify-content: center;
   background: rgba(0, 0, 0, 0.6);
   backdrop-filter: blur(4px);
-  position: absolute;
+  position: fixed;
   width: 100%;
   height: 100%;
   left: 0;
@@ -21,7 +21,7 @@ export const Container = styled.div`
   max-width: 450px;
   width: 100%;
 
-  h1 {
+  > h1 {
     font-size: 22px;
     color: ${({ danger, theme }) => (danger
     ? theme.colors.danger.main
@@ -29,12 +29,12 @@ export const Container = styled.div`
 };
   }
 
-  p {
-    margin-top: 8px;
+  .modal-body {
+    margin-top: 24px;
   }
 `;
 
-export const Footer = styled.div`
+export const Footer = styled.footer`
   margin-top: 32px;
   display: flex;
   align-items: center;
@@ -44,7 +44,7 @@ export const Footer = styled.div`
     background-color: transparent;
     border: none;
     font-size: 16px;
-    margin-right: 8px;
+    margin-right: 24px;
     color: #bcbcbc
   }
 `;

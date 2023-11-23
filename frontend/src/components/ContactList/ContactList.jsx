@@ -18,7 +18,15 @@ import magnifierQuestion from '../../assets/images/magnifier-question.svg';
 import Error from '../Error/Error';
 
 function ContactList({
-  filteredContacts, handleClick, orderBy, hasError, handleTryAgain, contacts, isLoading, value,
+  filteredContacts,
+  handleClick,
+  orderBy,
+  hasError,
+  handleTryAgain,
+  contacts,
+  isLoading,
+  value,
+  onClick,
 }) {
   return (
     <Container>
@@ -99,7 +107,7 @@ function ContactList({
                 <Link to={`/edit/${contact.id}`}>
                   <img src={edit} alt="Editar contato" />
                 </Link>
-                <button type="button">
+                <button type="button" onClick={() => onClick(contact.name)}>
                   <img src={trash} alt="Apagar contato" />
                 </button>
               </div>
@@ -112,6 +120,7 @@ function ContactList({
 }
 
 ContactList.propTypes = {
+  onClick: PropTypes.func.isRequired,
   filteredContacts: PropTypes.array.isRequired,
   handleClick: PropTypes.func.isRequired,
   orderBy: PropTypes.string.isRequired,
