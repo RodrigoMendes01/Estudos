@@ -4,11 +4,19 @@ import { OverLay, Container, Footer } from './styles';
 import Button from '../Button';
 
 function Modal({
-  danger, title, children, cancelLabel, confirmLabel, onCancel, onConfirm, visible,
+  danger,
+  title,
+  children,
+  cancelLabel,
+  confirmLabel,
+  onCancel,
+  onConfirm,
+  visible,
 }) {
   if (!visible) {
     return null;
   }
+
   return ReactDOM.createPortal(
     <OverLay>
       <Container danger={danger}>
@@ -33,8 +41,8 @@ Modal.propTypes = {
   visible: PropTypes.bool.isRequired,
   title: PropTypes.string.isRequired,
   children: PropTypes.node.isRequired,
-  cancelLabel: PropTypes.string.isRequired,
-  confirmLabel: PropTypes.string.isRequired,
+  cancelLabel: PropTypes.string,
+  confirmLabel: PropTypes.string,
   onCancel: PropTypes.func.isRequired,
   onConfirm: PropTypes.func.isRequired,
 };

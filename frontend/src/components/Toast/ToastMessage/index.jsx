@@ -11,7 +11,7 @@ function ToastMessage({
   useEffect(() => {
     const timeOutId = setTimeout(() => {
       onRemoveMessage(id);
-    }, 5000);
+    }, 4000);
 
     return () => {
       clearTimeout(timeOutId);
