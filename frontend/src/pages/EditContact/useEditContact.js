@@ -1,4 +1,4 @@
-import { useParams, useHistory } from 'react-router-dom';
+import { useParams, useNavigate } from 'react-router-dom';
 import { useEffect, useRef, useState } from 'react';
 
 import ContactsService from '../../services/ContactsService';
@@ -7,7 +7,7 @@ import toast from '../../utils/toast';
 export default function useEditContact() {
   const [isLoading, setIsLoading] = useState(true);
   const { id } = useParams();
-  const history = useHistory();
+  const history = useNavigate();
   const contactFormRef = useRef(null);
   const [contactName, setContactName] = useState('');
 
@@ -21,7 +21,7 @@ export default function useEditContact() {
         setIsLoading(false);
         setContactName(contact.name);
       } catch (error) {
-        history.push('/');
+        history('/');
         toast({
           type: 'danger',
           text: 'Contato não foi encontrado!',
