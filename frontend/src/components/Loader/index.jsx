@@ -1,7 +1,7 @@
 import ReactDOM from 'react-dom';
 import PropTypes from 'prop-types';
 import { Overlay } from './styles';
-import Spinner from '../Spinner/Spinner';
+import Spinner from '../Spinner';
 
 function Loader({ isLoading }) {
   if (!isLoading) {

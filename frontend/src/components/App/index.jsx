@@ -8,8 +8,8 @@ import defaultTheme from '../../assets/styles/themes/default';
 import { Container } from './styles';
 
 // COMPONENTS
-import Header from '../Header/Header';
-import ToastContainer from '../Toast/ToastContainer/Toast';
+import Header from '../Header';
+import ToastContainer from '../Toast/ToastContainer';
 
 function App() {
   return (

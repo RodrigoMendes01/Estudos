@@ -8,7 +8,7 @@ import { Container } from './styles';
 import sad from '../../assets/images/sad.svg';
 
 // COMPONENTS
-import Button from '../Button/Button';
+import Button from '../Button';
 
 function Error({ handleTryAgain }) {
   return (

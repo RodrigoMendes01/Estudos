@@ -1,6 +1,6 @@
 import PropTypes from 'prop-types';
 import { Container } from './styles';
-import Spinner from '../Spinner/Spinner';
+import Spinner from '../Spinner';
 
 function FormGroup({ children, error, isLoading }) {
   return (

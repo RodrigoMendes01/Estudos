@@ -4,10 +4,10 @@ import PropTypes from 'prop-types';
 import { forwardRef } from 'react';
 
 // INTERNAL
-import FormGroup from '../FormGroup/FormGroup';
+import FormGroup from '../FormGroup';
 import Input from '../Input';
 import Select from '../Select';
-import Button from '../Button/Button';
+import Button from '../Button';
 import useContactForm from './useContactForm';
 
 // STYLES

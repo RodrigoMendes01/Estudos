@@ -1,7 +1,7 @@
 // COMPONENTS
-import PageHeader from '../../components/PageHeader/PageHeader';
-import ContactForm from '../../components/ContactForm/ContactForm';
-import Loader from '../../components/Loader/Loader';
+import PageHeader from '../../components/PageHeader';
+import ContactForm from '../../components/ContactForm';
+import Loader from '../../components/Loader';
 
 import useEditContact from './useEditContact';
 

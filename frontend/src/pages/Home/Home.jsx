@@ -19,9 +19,9 @@ import emptyBox from '../../assets/images/empty-box.svg';
 import magnifierQuestion from '../../assets/images/magnifier-question.svg';
 
 // COMPONENTS
-import Loader from '../../components/Loader/Loader';
-import Modal from '../../components/Modal/Modal';
-import Error from '../../components/Error/Error';
+import Loader from '../../components/Loader';
+import Modal from '../../components/Modal';
+import Error from '../../components/Error';
 
 import useHome from './useHome';
 

@@ -1,7 +1,7 @@
 import PropTypes from 'prop-types';
 import ReactDOM from 'react-dom';
 import { OverLay, Container, Footer } from './styles';
-import Button from '../Button/Button';
+import Button from '../Button';
 
 function Modal({
   danger, title, children, cancelLabel, confirmLabel, onCancel, onConfirm, visible,

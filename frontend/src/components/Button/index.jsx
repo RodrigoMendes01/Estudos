@@ -1,6 +1,6 @@
 import PropTypes from 'prop-types';
 import { StyledButton } from './styles';
-import Spinner from '../Spinner/Spinner';
+import Spinner from '../Spinner';
 
 function Button({
   isLoading, type, disabled, children, danger, onClick,

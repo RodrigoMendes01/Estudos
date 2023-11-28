@@ -1,6 +1,6 @@
 // COMPONENTS
-import ContactForm from '../../components/ContactForm/ContactForm';
-import PageHeader from '../../components/PageHeader/PageHeader';
+import ContactForm from '../../components/ContactForm';
+import PageHeader from '../../components/PageHeader';
 
 import useNewContact from './useNewContact';
 
