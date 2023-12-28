@@ -17,16 +17,6 @@ const makeEmailValidator = (): EmailValidator => {
   return new EmailValidator()
 }
 
-const makeEmailValidatorWithError = (): EmailValidator => {
-  class EmailValidator implements EmailValidator {
-    isValid (email: string): boolean {
-      throw new Error()
-    }
-  }
-
-  return new EmailValidator()
-}
-
 const makeSut = (): SutTypes => {
   const emailValidator = makeEmailValidator()
 
@@ -131,8 +121,11 @@ describe('Signup Controller', () => {
   })
 
   test('Should return 500 if EmailValidator throws', () => {
-    const emailValidator = makeEmailValidatorWithError()
-    const sut = new SignupController(emailValidator)
+    const { sut, emailValidator } = makeSut()
+
+    jest.spyOn(emailValidator, 'isValid').mockImplementationOnce(() => {
+      throw new Error()
+    })
 
     const httpRequest = {
       body: {
