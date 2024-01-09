@@ -1,7 +1,9 @@
-// OS PARAMETRO DEVEM SER TIPADOS
+// OS PARAMETRO DEVEM SER TIPADOS E TAMBÉM O RETORNO DA FUNÇÃO
+// MAS CASO NÃO TIPE O RETORNO DA F, O TS POSSUI INTELIGÊNCIA PARA AUTO TIPAR O RETORNO
 
-const soma = (numberX: number, numberY: number) => {
-  return numberX + numberY
+const soma = (X: number, Y: number): number => {
+  return X + Y
 }
 
-soma(10, 10)
+// VALUE É DO TIPO NUMBER POR CAUSA DO RETORNO DA FUNÇÃO
+const value = soma(10, 10)
