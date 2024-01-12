@@ -14,125 +14,198 @@
     <img id="brand" src="./assets/logo.png" alt="Logo da empresa">
   </header>
   <main>
-    <div id="progress-container">
-      <div id="progress-stage">
-        <a class="stage" id="stageOne" href="">1/3</a>
-        <a class="stage" id="stageTwo" href="">2/3</a>
-        <a class="stage" id="stageThree" href="">3/3</a>
+    <form action="#" class="form">
+      <!-- Progress bar -->
+      <div class="progressbar">
+        <div class="progress" id="progress"></div>
+        <div class="progress-step progress-step-active"></div>
+        <div class="progress-step"></div>
+        <div class="progress-step"></div>
+        <div class="progress-step"></div>
       </div>
-      <div id="progress-bar">
-      
-      </div>
-    </div>
 
-    <div id="form-container">
-      <h2>Quem são os passageiros?</h2>
+      <!-- Steps -->
 
-      <form action="" id="form">
-        <div class="person-container">
-          <div class="card">
-            <span class="title">Dados pessoais</span>
-            <label class="label" for="">
-              Nome
-              <input class="input" type="text">
-            </label>
-  
-            <label class="label" for="">
-              E-mail
-              <input class="input" type="email">
-            </label>
-  
-            <label class="label" for="">
-              Telefone
-              <input class="input" type="text">
-            </label>
-  
-            <label for="">
-              Possui deficiência?
-              <input type="radio" name="option" value="yes">
-              <label for="optionyes">Sim</label>
-              <input type="radio" name="option" value="no">
-              <label for="optionno">Não</label>
-            </label>
+      <div class="form-step form-step-active">
+        <h2>Me informe sua origem</h2>
+        <span>Campos com (<strong>*</strong>) são obrigatórios</span>
 
-            <label class="label" for="">
-              Observações:
-              <textarea rez class="textarea"  name="" id="" cols="30" rows="5"></textarea>
-            </label>
-          </div>
-
-          <div class="card" id="origin">
-            <span class="title">Origem</span>
-            <label class="label" for="">
-              Rua
-              <input class="input" type="text">
-            </label>
-
-            <label class="label" for="">
-              Bairro
-              <input class="input" type="text">
-            </label>
-
-            <div class="group">
-              <label class="label" for="">
-                Cidade
-                <input class="input" type="text">
-              </label>
-
-              <label class="label" for="">
-                Número
-                <input class="input" type="text" id="number">
-              </label>
-            </div>
-  
-            <label class="label" for="">
-              Estado
-              <input class="input" type="text">
-            </label>
-
-            <label class="label" for="">
-              Data de saída
-              <input class="input" type="datetime-local">
-            </label>
-          </div>
-
-          <div class="card" id="destiny">
-            <span class="adress-title">Destino</span>
-            <label class="label" for="">
-              Rua
-              <input class="input" type="text">
-            </label>
-
-            <label class="label" for="">
-              Bairro
-              <input class="input" type="text">
-            </label>
-
-            <div class="group">
-              <label class="label" for="">
-                Cidade
-                <input class="input" type="text">
-              </label>
-
-              <label class="label" for="">
-                Número
-                <input class="input" type="text" id="number">
-              </label>
-            </div>
-
-            <label class="label" for="">
-              Estado
-              <input class="input" type="text">
-            </label>
-          </div>
+        <div class="input-group">
+          <label class="label" for="street">Rua:</label>
+          <input class="input" type="text" name="street" id="street" placeholder="Digite sua rua *">
         </div>
 
-        <div id="buttons">
-          <button type="submit" class="button" id="save">Salvar</button>
-          <button class="button" id="newPassager">Adicionar novo passageiro?</button>
+        <div class="input-group">
+          <label class="label" for="number">Número:</label>
+          <input class="input" type="number" name="number" id="number" placeholder="Digite o número da residência *">
         </div>
-      </form>
-    </div>
+
+        <div class="input-group">
+          <label class="label" for="neighborhood">Bairro:</label>
+          <input class="input" type="text" name="neighborhood" id="neighborhood" placeholder="Digite seu bairro *">
+        </div>
+
+        <div class="input-group">
+          <label class="label" for="city">Cidade:</label>
+          <input class="input" type="text" name="city" id="city" placeholder="Digite sua cidade *">
+        </div>
+
+        <div class="input-group">
+          <label class="label" for="state">Estado:</label>
+          <input class="input" type="text" name="state" id="state" placeholder="Digite seu estado *">
+        </div>
+
+        <div class="btns-group">
+          <a href="#" class="btn btn-next">Próximo</a>
+        </div>
+      </div>
+
+      <div class="form-step">
+        <h2>Me informe seu destino</h2>
+        <span>Campos com (<strong>*</strong>) são obrigatórios</span>
+
+        <div class="input-group">
+          <label class="label" for="street">Rua:</label>
+          <input class="input" type="text" name="street" id="street" placeholder="Digite sua rua *">
+        </div>
+
+        <div class="input-group">
+          <label class="label" for="number">Número:</label>
+          <input class="input" type="number" name="number" id="number" placeholder="Digite o número da residência *">
+        </div>
+
+        <div class="input-group">
+          <label class="label" for="neighborhood">Bairro:</label>
+          <input class="input" type="text" name="neighborhood" id="neighborhood" placeholder="Digite seu bairro *">
+        </div>
+
+        <div class="input-group">
+          <label class="label" for="city">Cidade:</label>
+          <input class="input" type="text" name="city" id="city" placeholder="Digite sua cidade *">
+        </div>
+
+        <div class="input-group">
+          <label class="label" for="state">Estado:</label>
+          <input class="input" type="text" name="state" id="state" placeholder="Digite seu estado *">
+        </div>
+
+        <div class="input-group">
+          <label class="label" for="departureDate">Data de saída<strong>*</strong>:</label>
+          <input class="input" type="datetime-local" name="departureDate" id="departureDate">
+        </div>
+
+        <div class="input-group">
+          <label class="label" for="details">Observações:</label>
+          <textarea class="textarea" name="details" id="details" cols="50" rows="8" placeholder="Digite aqui detalhes"></textarea>
+        </div>
+        
+        <div class="btns-group">
+          <a href="#" class="btn btn-prev">Voltar</a>
+          <a href="#" class="btn btn-next">Próximo</a>
+        </div>
+      </div>
+
+      <div class="form-step">
+        <h2>Me informe os dados pessoais</h2>
+        <span>Campos com (<strong>*</strong>) são obrigatórios</span>
+
+        <div class="input-group">
+          <label class="label" for="name">Nome:</label>
+          <input class="input" type="text" name="name" id="name" placeholder="Digite o nome da pessoa *">
+        </div>
+
+        <div class="input-group">
+          <label class="label" for="email">E-mail:</label>
+          <input class="input" type="email" name="email" id="email" placeholder="Digite o e-mail da pessoa *">
+        </div>
+
+        <div class="input-group">
+          <label class="label" for="phone">Telefone:</label>
+          <input class="input" type="text" maxlength="15" name="phone" id="phone" placeholder="(DDD) 00000-0000">
+        </div>
+
+        <div>
+          <label class="label" for="">Possui deficiência?</label>
+          <input type="radio" name="PCD" id="" value="yes">Sim
+          <input type="radio" name="PCD" id="" value="no">Não
+        </div>
+
+        <div class="btns-group">
+          <a href="#" class="btn btn-prev">Voltar</a>
+          <a href="#" class="btn btn-next">Próximo</a>
+        </div>
+      </div>
+
+      <div class="form-step">
+        <h2>Me informe o endereço</h2>
+        <span>Campos com (<strong>*</strong>) são obrigatórios</span>
+
+        <div class="input-group">
+          <label class="label" for="street">Rua:</label>
+          <input class="input" type="text" name="street" id="street" placeholder="Digite sua rua *">
+        </div>
+
+        <div class="input-group">
+          <label class="label" for="number">Número:</label>
+          <input class="input" type="number" name="number" id="number" placeholder="Digite o número da residência *">
+        </div>
+
+        <div class="input-group">
+          <label class="label" for="neighborhood">Bairro:</label>
+          <input class="input" type="text" name="neighborhood" id="neighborhood" placeholder="Digite seu bairro *">
+        </div>
+
+        <div class="input-group">
+          <label class="label" for="city">Cidade:</label>
+          <input class="input" type="text" name="city" id="city" placeholder="Digite sua cidade *">
+        </div>
+
+        <div class="input-group">
+          <label class="label" for="state">Estado:</label>
+          <input class="input" type="text" name="state" id="state" placeholder="Digite seu estado *">
+        </div>   
+        
+        <div class="last-stage-btns">
+          <div class="btns-group">
+            <button type="submit" id="submit-btn">Salvar</button>
+            <a class="btn btn-add">Adicionar mais passageiros?</a>
+          </div>
+          <div class="btns-group">
+            <a href="#" class="btn btn-prev">Voltar</a>
+          </div>    
+        </div>
+      </div>
+
+      <div class="form-step">
+        <h2>Me informe os dados pessoais</h2>
+
+        <div class="input-group">
+          <label class="label" for="name">Nome:</label>
+          <input class="input" type="text" name="name" id="name" placeholder="Digite o nome da pessoa *">
+        </div>
+
+        <div class="input-group">
+          <label class="label" for="email">E-mail:</label>
+          <input class="input" type="email" name="email" id="email" placeholder="Digite o e-mail da pessoa *">
+        </div>
+
+        <div class="input-group">
+          <label class="label" for="phone">Telefone:</label>
+          <input class="input" type="text" maxlength="15" name="phone" id="phone" placeholder="(DDD) 00000-0000">
+        </div>
+
+        <div>
+          <label class="label" for="">Possui deficiência?</label>
+          <input type="radio" name="PCD" id="" value="yes">Sim
+          <input type="radio" name="PCD" id="" value="no">Não
+        </div>
+
+        <div class="btns-group">
+          <a href="#" class="btn btn-prev">Voltar</a>
+          <a href="#" class="btn btn-next">Próximo</a>
+        </div>
+      </div>
+    </form>
   </main>
   <script src="./index.js"></script>
 </body>
