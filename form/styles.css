@@ -1,0 +1,173 @@
+:root {
+  --progress: 30
+}
+
+body {
+  box-sizing: border-box;
+  padding: 0;
+  margin: 0;
+  font-family: 'DM Sans', 'sans-serif';
+  background-color: #f1f1f1;
+}
+
+header {
+  padding: 15px 20px;
+  display: flex;
+  background-color: rgb(57, 57, 250);
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 64px;
+}
+
+#brand {
+  max-height: 70px;
+}
+
+main {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 90%;
+  margin: auto;
+  gap: 42px;
+}
+
+#progress-container {
+  display: flex;
+  flex-direction: column;
+  width: 40%;
+  gap: 4px;
+}
+
+#progress-stage {
+  display: flex;
+  justify-content: space-between;
+  padding: 0px 4px;
+}
+
+.stage {
+  text-decoration: none;
+  font-size: 14px;
+  font-weight: bold;
+  padding: 6px;
+  border-radius: 50%;
+  background-color: #E9ECEF;
+  color: #495057;
+}
+
+.stage:active {
+  color: white;
+}
+
+.stage:hover {
+  color: white;
+  background-color: #495057;
+  transition: background 0.2s ease-in;
+}
+
+#progress-bar {
+  height: 20px;
+  padding: 4px;
+  background-color: #DEE2E6;
+  display: flex;
+  border-radius: 4px;
+}
+
+#progress-bar::before{
+  content: "";
+  width: calc(var(--progress) * 1%);
+  background-color: hsl( calc(var(--progress) * 1.2) , 80%, 50%);
+  transition: all 0.2s ease;
+}
+
+#form-container {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  width: 90%;
+  gap: 24px;
+}
+
+#form {
+  width: 100%;
+}
+
+.person-container {
+  display: flex;
+  justify-content: space-between;
+}
+
+.card {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  min-width: 30%;
+}
+
+.label {
+  font-size: 14px;
+  display: flex;
+  flex-direction: column;
+}
+
+.input {
+  padding: 0px 4px;
+  height: 30px;
+  border: 0;
+  border-radius: 4px;
+  box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.05);
+}
+
+.input:focus {
+  box-shadow: 0 0 0 0;
+  border: 0 none;
+  outline: 0;
+}
+
+.textarea {
+  resize: none;
+  border: none;
+  box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.05);
+  border-radius: 4px;
+  padding: 4px;
+}
+
+.textarea:focus {
+  border: 0 none;
+  outline: 0;
+}
+
+.group {
+  display: flex;
+  justify-content: space-between;
+}
+
+#number {
+  max-width: 60px;
+}
+
+#buttons {
+  gap: 34px;
+  display: flex;
+  margin-top: 54px;
+  justify-content: center;
+}
+
+.button {
+  height: 40px;
+  padding: 8px;
+  border: none;
+  font-size: 16px;
+  letter-spacing: 0.4px;
+  font-weight: bold;
+  background-color: #2F9E44;
+  border-radius: 4px;
+  color: white;
+  box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.05);
+}
+
+.button:hover {
+  background-color: #2B8A3E;
+  cursor: pointer;
+  transition: background 0.2s ease-in;
+}
